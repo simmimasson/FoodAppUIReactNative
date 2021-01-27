@@ -31,22 +31,54 @@ const DetailsScreen = ({navigation, route}) => {
               alignItems: 'center',
             }}>
             <Text
-              style={{fontSize: 25, fontWeight: 'bold', color: COLORS.white}}>
+              style={{fontSize: 28, fontWeight: 'bold', color: COLORS.white}}>
               {item.name}
             </Text>
             <View style={style.iconContainer}>
               <Icon name="favorite-border" color={COLORS.primary} size={25} />
             </View>
           </View>
+          <Text style={style.coachname}>
+          {item.Coach}
+          </Text>
           <Text style={style.detailsText}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
+            industry. 
+          </Text>
+          <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginVertical: 15,
+                }}> 
+          <Text style={style.headerText}>
+            Upplysingar
+          </Text>
+          <Text style={style.headerTextmin}>
+            {item.time}
+          </Text>
+          </View>
+          <Text style={style.detailsText}>
+             Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book. It has survived not
             only five centuries.
           </Text>
-          <View style={{marginTop: 40, marginBottom: 40}}>
-            <SecondaryButton title="Add To Cart" />
+          <Text style={style.headerText}>
+            {item.drilllist}
+          </Text>
+          <Text style={style.detailsText}>
+            {item.description}
+          </Text>
+          <View style={{flex: 1, flexDirection: 'row', marginTop:30}}>
+          <Text style={style.headerText1}>
+            {item.Drill1}
+          </Text>
+          <Text style={style.detailsText1}>
+            {item.Infodrill}
+          </Text>
+          </View>
+          <View style={{marginTop: 40, marginBottom: 0}}>
+            <SecondaryButton title="Pick practice" />
           </View>
         </View>
       </ScrollView>
@@ -83,6 +115,36 @@ const style = StyleSheet.create({
     fontSize: 16,
     color: COLORS.white,
   },
+  coachname: {
+    fontSize: 20,
+    color: COLORS.white,
+    fontWeight:'bold',
+  },
+  headerText: {
+    fontSize:20,
+    fontWeight:"bold",
+    marginTop:5,
+  },
+  headerText1: {
+    fontSize:20,
+    fontWeight:"bold",
+    marginTop:5,
+    width:'30%',
+  },
+  detailsText1: {
+    marginTop: 10,
+    lineHeight: 22,
+    fontSize: 16,
+    color: COLORS.white,
+    width:'65%',
+  },
+  headerTextmin: {
+    fontSize:20,
+    fontWeight:"bold",
+    marginTop:5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 export default DetailsScreen;

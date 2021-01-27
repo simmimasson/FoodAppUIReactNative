@@ -18,8 +18,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import categories from '../../consts/categories';
 import foods from '../../consts/foods';
+import practices from '../../consts/practices';
+
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
+
 
 const HomeScreen = ({navigation}) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
@@ -43,17 +46,17 @@ const HomeScreen = ({navigation}) => {
                     : COLORS.secondary,
                 ...style.categoryBtn,
               }}>
-              <View style={style.categoryBtnImgCon}>
+              {/*<View style={style.categoryBtnImgCon}>
                 <Image
                   source={category.image}
                   style={{height: 35, width: 35, resizeMode: 'cover'}}
                 />
-              </View>
+              </View>*/}
               <Text
                 style={{
                   fontSize: 15,
                   fontWeight: 'bold',
-                  marginLeft: 10,
+                  marginLeft: 15,
                   color:
                     selectedCategoryIndex == index
                       ? COLORS.white
@@ -67,20 +70,20 @@ const HomeScreen = ({navigation}) => {
       </ScrollView>
     );
   };
-  const Card = ({food}) => {
+  const Card = ({practice}) => {
     return (
       <TouchableHighlight
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => navigation.navigate('DetailsScreen', food)}>
+        onPress={() => navigation.navigate('DetailsScreen', practice)}>
         <View style={style.card}>
-          <View style={{alignItems: 'center', top: -40}}>
-            <Image source={food.image} style={{height: 120, width: 120}} />
+          <View style={{alignItems: 'center', top: -40,}}>
+            <Image source={practice.image} style={{height: 120, width: 120,borderRadius:15}} />
           </View>
           <View style={{marginHorizontal: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{food.name}</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{practice.name}</Text>
             <Text style={{fontSize: 14, color: COLORS.grey, marginTop: 2}}>
-              {food.ingredients}
+              {practice.description}
             </Text>
           </View>
           <View
@@ -91,7 +94,7 @@ const HomeScreen = ({navigation}) => {
               justifyContent: 'space-between',
             }}>
             <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-              ${food.price}
+              {practice.practiceID}
             </Text>
             <View style={style.addToCartBtn}>
               <Icon name="add" size={20} color={COLORS.white} />
@@ -108,21 +111,21 @@ const HomeScreen = ({navigation}) => {
           <View style={{flexDirection: 'row'}}>
             <Text style={{fontSize: 28}}>Hello,</Text>
             <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
-              Ariz
+              Egill Ragnar
             </Text>
           </View>
-          <Text style={{marginTop: 5, fontSize: 22, color: COLORS.grey}}>
-            What do you want today
+          <Text style={{marginTop: 5, fontSize: 18, color: COLORS.grey}}>
+            What do you want to practice today?
           </Text>
         </View>
         <Image
-          source={require('../../assets/person.png')}
+          source={require('../../assets/egillprofile.jpg')}
           style={{height: 50, width: 50, borderRadius: 25}}
         />
       </View>
       <View
         style={{
-          marginTop: 40,
+          marginTop: 30,
           flexDirection: 'row',
           paddingHorizontal: 20,
         }}>
@@ -130,7 +133,7 @@ const HomeScreen = ({navigation}) => {
           <Icon name="search" size={28} />
           <TextInput
             style={{flex: 1, fontSize: 18}}
-            placeholder="Search for food"
+            placeholder="Search for a practice"
           />
         </View>
         <View style={style.sortBtn}>
@@ -143,8 +146,8 @@ const HomeScreen = ({navigation}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={foods}
-        renderItem={({item}) => <Card food={item} />}
+        data={practices}
+        renderItem={({item}) => <Card practice={item} />}
       />
     </SafeAreaView>
   );
@@ -176,13 +179,13 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   categoriesListContainer: {
-    paddingVertical: 30,
+    paddingVertical: 20,
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   categoryBtn: {
     height: 45,
-    width: 120,
+    width: 150,
     marginRight: 7,
     borderRadius: 30,
     alignItems: 'center',
@@ -215,6 +218,9 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  image:{
+    borderRadius:15
+  }
 });
 
 export default HomeScreen;

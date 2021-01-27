@@ -6,6 +6,7 @@ import COLORS from '../../consts/colors';
 import {View} from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
+import PracticeScreen from '../screens/PracticeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,9 +15,9 @@ const BottomNavigator = () => {
     <Tab.Navigator
       tabBarOptions={{
         style: {
-          height: 55,
+          height: 75,
           borderTopWidth: 0,
-          elevation: 0,
+          elevation: 150,
         },
         showLabel: false,
         activeTintColor: COLORS.primary,
@@ -31,11 +32,11 @@ const BottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="LocalMall"
+        name="Calendar"
         component={HomeScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="local-mall" color={color} size={28} />
+            <Icon name="calendar-today" color={color} size={28} />
           ),
         }}
       />
@@ -63,20 +64,20 @@ const BottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Favorite"
+        name="Groups"
         component={HomeScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="favorite" color={color} size={28} />
+            <Icon name="groups" color={color} size={38} />
           ),
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={CartScreen}
+        name="Practices"
+        component={PracticeScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="shopping-cart" color={color} size={28} />
+            <Icon name="sports-golf" color={color} size={32} />
           ),
         }}
       />
